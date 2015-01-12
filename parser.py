@@ -39,7 +39,7 @@ while pages_all < pages[1]:
 		pages = doc.xpath('//td[@class="vbmenu_control"]/text()')
 		pages = [int(s) for s in pages[0].split() if s.isdigit()]
 		print u'Всего старниц: ', pages[1]
-	 
+	
 	# Выводим номер страницы на которой мы находимся
 	print u"Страница", pages_all, u"из", pages[1]
 
