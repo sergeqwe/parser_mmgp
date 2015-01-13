@@ -1,8 +1,10 @@
+# %pylab inline
 import pandas as pd
 import matplotlib.pyplot as plt
 import datetime
 
-Location = '/home/qwe/Документы/python/result.txt'
+#Location = '/home/qwe/Документы/python/result.txt'
+Location = '/home/lepinskiy.s.v/python/parser_mmgp/result.txt'
 
 df = pd.read_csv(Location, names=['Names', 'Author', 'Start', 'End', 'Answer', 'Review'], sep=';;')
 
@@ -40,23 +42,18 @@ name = df.groupby('Delta')
 
 # Apply the sum function to the groupby object
 df = name.sum()
-df
 
-
-
-#Sorted = df.sort(['Delta'], ascending=False)
-
-
-
-# Суммируем хайпы по кол-ву прожитых дней
-#name = df.groupby('Delta')
-#df1 = name.sum()
-
-
+# Строим диаграмму
+df[:365].plot(kind='bar', figsize=(70, 10))
+grid(True)
+title(u'Срок жизни хайпов')
+ylabel(u'Кол-во соскамившихся хайпов')
+xlabel(u'Кол-во дней')
+#df[100:200].plot(kind='bar', figsize=(20, 5))
 
 
 #Добавляем через pandas колонку Howmuch
-#df['Howmuch'] = 0
+df['Days'] = 0
 
 # Рассчитываем сколько каждый день осталось хайпов
 #hyips = 17640
